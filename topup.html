@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AF Top-Up | PUBG UC & TikTok Coins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-1: #020817;
+            --bg-2: #0f172a;
+            --panel: rgba(15, 23, 42, 0.8);
+            --panel-strong: rgba(15, 23, 42, 0.96);
+            --border: rgba(148, 163, 184, 0.18);
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --cyan: #22d3ee;
+            --cyan-2: #06b6d4;
+            --pink: #ec4899;
+            --green: #34d399;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(34, 211, 238, 0.18), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.15), transparent 24%),
+                linear-gradient(135deg, var(--bg-1), var(--bg-2));
+            color: var(--text);
+            min-height: 100vh;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .page-shell {
+            width: min(100%, 1200px);
+            margin: 0 auto;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+                align-items: start;
+            }
+
+            .main-grid>.full-span {
+                grid-column: 1 / -1;
+            }
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.72);
+            border: 1px solid var(--border);
+            box-shadow: 0 18px 60px rgba(2, 6, 23, 0.4);
+            backdrop-filter: blur(12px);
+        }
+
+        .service-btn,
+        .package-card {
+            transition: all 180ms ease;
+        }
+
+        .service-btn:hover,
+        .package-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+        }
+
+        .package-card.selected {
+            border-color: rgba(34, 211, 238, 0.9);
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.25), rgba(17, 24, 39, 0.9));
+            box-shadow: 0 10px 24px rgba(34, 211, 238, 0.12);
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--cyan), var(--cyan-2));
+            box-shadow: 0 12px 30px rgba(34, 211, 238, 0.28);
+        }
+
+        .primary-btn:hover {
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+
+<body class="text-white font-sans min-h-screen">
+
+    <div class="pointer-events-none fixed inset-0 overflow-hidden">
+        <div class="absolute -top-24 -left-16 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl"></div>
+        <div class="absolute right-0 top-12 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl"></div>
+    </div>
+
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl">
+        <div class="page-shell flex items-center justify-between px-4 py-4 sm:px-6">
+            <div class="flex items-center gap-3 min-w-0">
+                <div
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 ring-1 ring-cyan-400/20">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <div class="min-w-0">
+                    <p class="text-[10px] uppercase tracking-[0.25em] text-cyan-300/80">Premium</p>
+                    <h1 class="text-lg font-bold text-white sm:text-xl">AF Top-Up</h1>
+                </div>
+            </div>
+            <a href="https://t.me/afmindset" target="_blank"
+                class="inline-flex shrink-0 items-center gap-2 rounded-full bg-blue-600 px-3 py-2 text-xs font-semibold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-500">
+                <i class="fa-brands fa-telegram"></i> Support
+            </a>
+        </div>
+    </header>
+
+    <main class="page-shell relative px-4 py-6 sm:px-6 lg:px-8">
+        <div class="main-grid">
+            <section class="glass full-span rounded-3xl p-4 sm:p-5">
+                <div class="mb-4 flex items-center justify-between gap-3">
+                    <div>
+                        <p class="text-[10px] uppercase tracking-[0.25em] text-cyan-300/80">Fast & Secure</p>
+                        <h2 class="mt-2 text-lg font-bold text-white sm:text-xl">Top up your favorite games</h2>
+                    </div>
+                    <span
+                        class="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-2 py-1 text-[10px] font-medium text-emerald-300">Live</span>
+                </div>
+
+                <div>
+                    <h3 class="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">1. Choose a
+                        Service</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="selectService('pubg')" id="btn-pubg"
+                            class="service-btn glass rounded-2xl border border-cyan-500/60 p-4 flex flex-col items-center gap-2 text-center hover:border-cyan-400">
+                            <i class="fa-solid fa-crosshairs text-3xl text-cyan-400"></i>
+                            <span class="text-sm font-bold">PUBG UC</span>
+                        </button>
+                        <button onclick="selectService('tiktok')" id="btn-tiktok"
+                            class="service-btn glass rounded-2xl border border-slate-700 p-4 flex flex-col items-center gap-2 text-center hover:border-pink-400/60">
+                            <i class="fa-brands fa-tiktok text-3xl text-pink-500"></i>
+                            <span class="text-sm font-bold">TikTok Coins</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-4 sm:p-5">
+                <h3 class="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">2. Select a Package
+                </h3>
+                <div id="package-list" class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2">
+                    <!-- Packages will be inserted via JS -->
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-4 sm:p-5">
+                <h3 class="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">3. Enter Your Details
+                </h3>
+                <div id="id-input-container">
+                    <label class="mb-2 block text-xs font-medium text-slate-300" id="id-label">PUBG Player ID</label>
+                    <input type="text" id="user-id" placeholder=""
+                        class="w-full rounded-2xl border border-slate-700 bg-slate-950/70 p-3 text-sm text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/20">
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-4 sm:p-5">
+                <h3 class="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">4. Complete Payment
+                </h3>
+
+                <div class="space-y-3">
+                    <div
+                        class="flex items-center justify-between gap-3 rounded-2xl border border-slate-700 bg-slate-950/70 p-3">
+                        <div class="min-w-0">
+                            <p class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Telebirr</p>
+                            <p class="mt-2 font-mono text-base font-bold text-cyan-400">0947718404</p>
+                            <p class="mt-1 text-[10px] text-slate-400">AbdulFerid</p>
+                        </div>
+                        <button onclick="copyToClipboard('0947718404')"
+                            class="shrink-0 rounded-xl border border-slate-600 bg-slate-800 px-3 py-2 text-xs font-medium text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300">
+                            <i class="fa-regular fa-copy"></i> Copy
+                        </button>
+                    </div>
+
+                    <div
+                        class="flex items-center justify-between gap-3 rounded-2xl border border-slate-700 bg-slate-950/70 p-3">
+                        <div class="min-w-0">
+                            <p class="text-[10px] uppercase tracking-[0.18em] text-slate-400">CBE Bank</p>
+                            <p class="mt-2 font-mono text-base font-bold text-purple-400">1000317962097</p>
+                            <p class="mt-1 text-[10px] text-slate-400">AbdulFerid Musefa</p>
+                        </div>
+                        <button onclick="copyToClipboard('1000317962097')"
+                            class="shrink-0 rounded-xl border border-slate-600 bg-slate-800 px-3 py-2 text-xs font-medium text-slate-200 transition hover:border-purple-400 hover:text-purple-300">
+                            <i class="fa-regular fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <label class="mb-2 block text-xs font-medium text-slate-300">Payment Reference / Transaction
+                        ID</label>
+                    <input type="text" id="txn-id" placeholder="Example: FT24XXXXXX"
+                        class="w-full rounded-2xl border border-slate-700 bg-slate-950/70 p-3 text-sm text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/20">
+                </div>
+            </section>
+
+            <button onclick="submitOrder()"
+                class="primary-btn full-span w-full rounded-2xl px-4 py-3.5 text-sm font-bold text-white shadow-lg transition flex items-center justify-center gap-2">
+                <i class="fa-paper-plane"></i> Submit Order
+            </button>
+        </div>
+    </main>
+
+    <script>
+        let selectedService = 'pubg';
+        let selectedPackage = null;
+
+        const packages = {
+            pubg: [
+                { name: '60 UC', price: '200 ETB' },
+                { name: '300 UC', price: '1,000 ETB' },
+                { name: '600 UC', price: '1,800 ETB' },
+                { name: '1500 UC', price: '4,600 ETB' },
+                { name: '3000 UC', price: '9,000 ETB' }
+            ],
+            tiktok: [
+                { name: '700 Coins', price: '1,600 ETB' },
+                { name: '1000 Coins', price: '2,200 ETB' },
+                { name: '3000 Coins', price: '7,000 ETB' },
+                { name: '5000 Coins', price: '11,500 ETB' },
+                { name: '10000 Coins', price: '22,000 ETB' }
+            ]
+        };
+
+        function getButtonClasses(isActive, accentColor) {
+            return `service-btn bg-slate-800 border-2 ${isActive ? accentColor : 'border-slate-700'} rounded-xl p-4 flex flex-col items-center gap-2 hover:bg-slate-700 transition`;
+        }
+
+        function selectService(service) {
+            selectedService = service;
+            selectedPackage = packages[selectedService][0].name;
+
+            document.getElementById('btn-pubg').className = getButtonClasses(service === 'pubg', 'border-cyan-500');
+            document.getElementById('btn-tiktok').className = getButtonClasses(service === 'tiktok', 'border-pink-500');
+
+            document.getElementById('id-label').innerText = service === 'pubg' ? 'PUBG Player ID' : 'TikTok Username (@username)';
+            document.getElementById('user-id').placeholder = service === 'pubg' ? 'Example: 5123456789' : 'Example: @user123';
+
+            renderPackages();
+        }
+
+        function renderPackages() {
+            const container = document.getElementById('package-list');
+            container.innerHTML = '';
+
+            if (!packages[selectedService]) return;
+            if (!selectedPackage || !packages[selectedService].some(pkg => pkg.name === selectedPackage)) {
+                selectedPackage = packages[selectedService][0].name;
+            }
+
+            packages[selectedService].forEach((pkg) => {
+                const card = document.createElement('div');
+                const isSelected = selectedPackage === pkg.name;
+                card.className = `package-card rounded-2xl border p-3 text-center cursor-pointer ${isSelected ? 'selected border-cyan-400' : 'border-slate-700 bg-slate-900/70 hover:border-slate-500'}`;
+                card.onclick = () => {
+                    selectedPackage = pkg.name;
+                    renderPackages();
+                };
+                card.innerHTML = `
+                    <p class="text-sm font-bold text-white">${pkg.name}</p>
+                    <p class="mt-2 text-xs font-medium text-cyan-300">${pkg.price}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        async function copyToClipboard(text) {
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.style.position = 'fixed';
+                    textarea.style.opacity = '0';
+                    document.body.appendChild(textarea);
+                    textarea.focus();
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                }
+                alert('Number copied successfully: ' + text);
+            } catch (error) {
+                alert('Copy failed. Please copy it manually: ' + text);
+            }
+        }
+
+        function submitOrder() {
+            const userId = document.getElementById('user-id').value.trim();
+            const txnId = document.getElementById('txn-id').value.trim();
+
+            if (!selectedPackage) return alert('Please select a package first.');
+            if (!userId) return alert('Please enter your account ID or username.');
+            if (!txnId) return alert('Please enter your payment reference or transaction ID.');
+
+            const serviceLabel = selectedService === 'pubg' ? 'PUBG UC' : 'TikTok Coins';
+            const message = [
+                '🚨 New Order 🚨',
+                '',
+                `🎮 Service: ${serviceLabel}`,
+                `📦 Package: ${selectedPackage}`,
+                `👤 Account ID: ${userId}`,
+                `🧾 Transaction ID: ${txnId}`
+            ].join('\n');
+
+            const telegramUrl = `https://t.me/afmindset?text=${encodeURIComponent(message)}`;
+            window.open(telegramUrl, '_blank');
+        }
+
+        renderPackages();
+    </script>
+</body>
+
+</html>
